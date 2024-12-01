@@ -1,4 +1,5 @@
-# Data Project:The Urban Pizza Sales Analysis 
+# Data Project: The Urban Pizza Sales Analysis 
+
 ![logo](https://github.com/SammieBarasa77/walmart_sales/blob/main/assets/images/cover_final.png)
 
 ## Table of Contents 
@@ -6,7 +7,7 @@
 
 1. [Introduction](#introduction)
    - [Project Overview](#project-overview)
-   - [Goals and Objectives](#goals-and-objectives)
+   - [Key Objectives](#key-objectives)
 
 2. [Database Setup and Queries](#database-setup-and-queries)
    - [Using the Database](#using-the-database)
@@ -52,45 +53,62 @@
      - [Revenue Contribution](#revenue-contribution)
 
 4. [Insights and Recommendations](#insights-and-recommendations)
-   - [Actionable Strategies](#actionable-strategies)
-   - [Future Opportunities](#future-opportunities)
+   - [Recommendations](#recommendations)
 
 5. [Appendix](#appendix)
    - [Data Source References](#data-source-references)
-   - [Acknowledgments](#acknowledgments)
 
 6. [Author](#author)
    - [Samuel Almario Barasa](#samuel-almario-barasa)
    - [Contact Information](#contact-information)
 
+## 1. Introduction
 
-Finding and Using the Database
+### Project Overview 
+
+The Urban Pizzas Sales Analysis project leverages SQL-based techniques to analyze sales data, providing actionable insights to enhance efficiency, optimize strategies, and improve customer satisfaction. The analysis is divided into two parts:
+
+Core Metrics and Trends Analysis: Focuses on foundational metrics like total revenue, average order value, and order trends, as well as the performance of pizza categories and sizes.
+
+Advanced Sales Insights: Explores customer behaviour, profitability, retention, market competition, delivery performance, and upselling effectiveness, offering a deeper understanding of the business
+
+### Key Objectives
+
+*To identify sales patterns and key performance indicators (KPIs) that reflect business health.*
+*To understand customer preferences and purchasing behaviours for better-targeted marketing.*
+*To analyze profitability and identify high-cost, low-profit items.*
+*To uncover opportunities for improving customer retention and optimizing operations.*
+*To provide actionable recommendations based on data-driven insights.*
+
+## 2. Database Setup and Queries
+### Using the Database
+
 ```sql
 USE [Pizza DB];
 SELECT * FROM [Pizza DB].[dbo].[Pizza_Data];
 ```
 
-Key Performance Indicators (KPIs):
+### Key Performance Indicators (KPIs):
 
-Total Revenue
+#### Total Revenue
 ```sql
 SELECT SUM(total_price) AS Total_Revenue FROM Pizza_Data;
 ```
 
-Average Order Value (Revenue/Orders)
+#### Average Order Value (Revenue/Orders)
 ```sql
 SELECT SUM(total_price) / COUNT(DISTINCT order_id) AS Average_order_value FROM Pizza_Data;
 
 ```
-Total Pizzas Sold
+#### Total Pizzas Sold
 ```sql
 SELECT SUM(quantity) AS Total_Pizzas_sold FROM Pizza_Data;
 ```
-Total Orders
+#### Total Orders
 ```sql
 SELECT COUNT(DISTINCT order_id) AS Total_Orders FROM Pizza_Data;
 ```
-Average Pizzas Per Order
+#### Average Pizzas Per Order
 ```
 SELECT 
 CAST(CAST(SUM(quantity) AS DECIMAL(10, 2)) / 
@@ -98,16 +116,16 @@ CAST(COUNT(DISTINCT order_id) AS DECIMAL(10, 2)) AS DECIMAL(10, 2)) as Average_P
 FROM Pizza_Data;
 ```
 
-Trends Analysis
+### Trends Analysis
 
-Average Daily Orders
+#### Average Daily Orders
 ```sql
 SELECT DATENAME(DW, order_date) AS Order_Day, 
 COUNT(DISTINCT order_id) AS Average_Daily_Orders 
 FROM Pizza_Data 
 GROUP BY DATENAME(DW, order_date);
 ```
-Monthly Orders Trends:
+#### Monthly Orders Trends
 
 ```sql
 SELECT 
@@ -118,9 +136,9 @@ GROUP BY DATENAME(MONTH, order_date)
 ORDER BY Total_Monthly_Orders DESC;
 ```
 
-Sales by Categories and Sizes
+### Sales by Categories and Sizes
 
-Percentage of Sales by Pizza Category (for Month 1)
+#### Percentage of Sales by Pizza Category (for Month 1)
 ```sql
 SELECT pizza_category, 
 SUM(total_price) AS Total_sales, 
@@ -131,7 +149,7 @@ WHERE MONTH(order_date) = 1
 GROUP BY pizza_category 
 ORDER BY Percentage_of_sales DESC;
 ```
-Percentage of Sales by Pizza Size (Quarter 1):
+#### Percentage of Sales by Pizza Size (Quarter 1):
 ```sql
 SELECT pizza_size, 
 CAST(SUM(total_price) AS DECIMAL(10, 2)) AS Total_sales, 
@@ -144,7 +162,7 @@ GROUP BY pizza_size
 ORDER BY Percentage_of_sales DESC;
 ```
 
-Top Sellers by Revenue, Orders, and Quantity
+### Top Sellers by Revenue, Orders, and Quantity
 ```sql
 SELECT TOP 5 
 pizza_name, 
@@ -155,12 +173,15 @@ FROM Pizza_Data
 GROUP BY pizza_name 
 ORDER BY Total_Revenue DESC;
 ```
-For a thriving busing business entity, data analysis play a very vital role.
-There are still many areas that require analysis and some of them inclde the following;
 
-Customer Demographics and Behavior
+For a thriving busing business entity, data analysis plays a very vital role.
+There are still many areas that require analysis and some of them include the following;
 
-a. Analyze Customer Age Groups, Locations, and Preferences
+## 3. Advanced Sales Analysis
+
+### Customer Demographics and Behavior
+
+#### Age Groups and Locations
 ```sql
 -- Age Groups and Locations
 SELECT 
@@ -183,7 +204,7 @@ GROUP BY
     END, location;
 ```
 
-b. Identify Repeat Customers and Infrequent Customers
+#### Order Frequency
 ```sql
 SELECT 
     customer_id, 
@@ -196,7 +217,7 @@ FROM Orders
 GROUP BY customer_id;
 ```
 
-c. Understand Purchase Channels
+#### Purchase Channels
 ```sql
 SELECT 
     purchase_channel, 
@@ -205,9 +226,9 @@ FROM Orders
 GROUP BY purchase_channel;
 ```
 
-Profitability Analysis
+### Profitability Analysis
 
-a. Cost Analysis by Pizza Category, Size, or Overall
+#### Cost Analysis
 ```sql
 SELECT 
     pizza_category, 
@@ -219,7 +240,7 @@ FROM Pizza_Data
 GROUP BY pizza_category, pizza_size;
 ```
 
-b. Identify High-Cost, Low-Profit Items
+#### High-Cost, Low-Profit Items
 ```sql
 SELECT 
     pizza_name, 
@@ -231,9 +252,9 @@ GROUP BY pizza_name
 HAVING (SUM(total_price) - SUM(ingredient_cost)) < 0.1 * SUM(total_price); -- Low profit margin threshold
 ```
 
-Time-Sensitive Insights
+### Time-Sensitive Insights
 
-a. Hourly Sales Patterns
+#### Hourly Sales Patterns
 ```sql
 SELECT 
     DATEPART(HOUR, order_time) AS Hour, 
@@ -243,7 +264,7 @@ GROUP BY DATEPART(HOUR, order_time)
 ORDER BY Hour;
 ```
 
-b. Seasonal Menu Adjustments
+#### Seasonal Menu Adjustments
 ```sql
 SELECT 
     pizza_category, 
@@ -254,9 +275,9 @@ GROUP BY pizza_category, MONTH(order_date)
 ORDER BY Total_Sales DESC;
 ```
 
-Customer Retention Metrics
+### Customer Retention Metrics
 
-a. Churn Rate
+#### Churn Rate
 ```sql
 SELECT 
     customer_id, 
@@ -269,7 +290,7 @@ FROM Orders
 GROUP BY customer_id;
 ```
 
-b. Loyalty Effectiveness
+#### Loyalty Effectiveness
 ```sql
 SELECT 
     customer_id, 
@@ -280,10 +301,11 @@ GROUP BY customer_id
 HAVING SUM(loyalty_points_used) > 0;
 ```
 
-Market Competition
-a. Competitor Pricing and Promotions (Manual Data Needed)
+### Market Competition
 
-Collect competitor data into a table (e.g., Competitor_Data) and analyze:
+#### Competitor Analysis
+
+Here, there would be a need to collect competitor data in a table and then be analyzed:
 ```sql
 SELECT 
     pizza_category, 
@@ -293,7 +315,7 @@ FROM Competitor_Data
 GROUP BY pizza_category;
 ```
 
-b. Unique Selling Points (Internal Data Insight)
+#### Unique Selling Points 
 ```sql
 SELECT 
     pizza_category, 
@@ -302,9 +324,9 @@ FROM Pizza_Data
 GROUP BY pizza_category;
 ```
 
-Delivery and Fulfillment
+### Delivery and Fulfillment
 
-a. Average Delivery Times
+#### Average Delivery Times
 ```sql
 SELECT 
     AVG(DATEDIFF(MINUTE, order_time, delivery_time)) AS Avg_Delivery_Time
@@ -312,7 +334,7 @@ FROM Orders
 WHERE delivery_time IS NOT NULL;
 ```
 
-b. Order Fulfillment Errors
+#### Order Fulfillment Errors
 ```sql
 SELECT 
     COUNT(*) AS Total_Errors, 
@@ -321,9 +343,9 @@ FROM Fulfillment_Errors
 GROUP BY error_type;
 ```
 
- Online Presence and Reviews
+### Online Presence and Reviews
  
-a. Review Analysis
+#### Review Analysis
 ```sql
 SELECT 
     rating, 
@@ -333,7 +355,7 @@ FROM Reviews
 GROUP BY rating;
 ```
 
-b. Social Media Engagement
+#### Social Media Engagement
 ```sql
 SELECT 
     post_id, 
@@ -344,9 +366,9 @@ FROM Social_Media_Posts
 GROUP BY post_id;
 ```
 
-Upselling and Cross-Selling Effectiveness
+#### Upselling and Cross-Selling Effectiveness
 
-a. Conversion Rates
+#### Conversion Rates
 ```sql
 SELECT 
     upsell_item, 
@@ -356,7 +378,7 @@ FROM Upsell_Orders
 GROUP BY upsell_item;
 ```
 
-b. Revenue Contribution
+#### Revenue Contribution
 ```sql
 SELECT 
     upsell_item, 
@@ -366,7 +388,7 @@ FROM Upsell_Orders
 GROUP BY upsell_item;
 ```
 
-## Findings and Recommendations
+## 4. Insights and Recommendations
 
 Average Pizza Orders per Order: *The average number of pizzas per order is 2.32, indicating typical customer order behavior.*
 
@@ -382,20 +404,31 @@ Sales by Pizza Category: *Sales breakdown by category shows Classic (26.86%), Su
 
 Sales by Pizza Size: *Sales by size reveal that Large pizzas account for 45.48%, Medium at 29.31%, Small at 21.71%, and XL/XXL at 1.74%, which can inform product mix and inventory decisions.*
 
-Recommendations
+### Recommendations
 
-Based on the analysis of the Urban Pizzas data, here are several recommendations to potentially increase sales:
+Based on the analysis, here are several recommendations to potentially increase sales:
 
-Promote Peak Days: Since Saturday has the highest average orders, consider implementing special promotions or discounts on this day to further boost sales. Additionally, targeting Wednesday and Monday with similar promotions could help increase orders on those days.
+Promote Peak Days: *Since Saturday has the highest average orders, consider implementing special promotions or discounts on this day to further boost sales. Additionally, targeting Wednesday and Monday with similar promotions could help increase orders.*
 
-Seasonal Promotions: Given the seasonal trends, particularly the high sales in July, consider launching summer-themed promotions or limited-time offers during peak months to attract more customers.
+Seasonal Promotions: *Given the seasonal trends, particularly the high sales in July, consider launching summer-themed promotions or limited-time offers during peak months to attract more customers.*
 
-Enhance Average Order Value: With an average order value of $38.37, strategies such as upselling (e.g., suggesting sides or drinks) or bundling pizzas with complementary items could encourage customers to spend more per order.
+Enhance Average Order Value: *With an average order value of $38.37, strategies such as upselling (e.g., suggesting sides or drinks) or bundling pizzas with complementary items could encourage customers to spend more per order.*
 
-Focus on Popular Categories: Since Classic and Supreme pizzas are the top-selling categories, consider expanding the menu with variations of these pizzas or introducing new flavors that align with customer preferences.
+Focus on Popular Categories: *Since Classic and Supreme pizzas are the top-selling categories, consider expanding the menu with variations of these pizzas or introducing new flavours that align with customer preferences.*
 
-Size Promotions: With Large pizzas accounting for the majority of sales, consider offering discounts on larger sizes or family packs to encourage larger orders, especially for group gatherings.
+Size Promotions: *With Large pizzas accounting for most sales, consider offering discounts on larger sizes or family packs to encourage larger orders, especially for group gatherings.*
 
-Loyalty Programs: Implementing a loyalty program could incentivize repeat customers, encouraging them to order more frequently and increase overall sales.
+Loyalty Programs: *Implementing a loyalty program could encourage repeat customers to order more frequently and increase overall sales.*
+
+## 5. Appendix
+### Data Source References
+Feel free to download the dataset I used for this very analysis from here and do the analysis on your own if you would like to: 'https://github.com/SammieBarasa77/pizza_sales/blob/main/assets/docs/Pizza_Data.csv'
+
+## 6. Author
+
+### Samuel Almario Barasa
+![LinkedIn](https://www.linkedin.com/in/samuel-barasa-b01488211/)
+![Portfolio](https://sammiebarasa77.github.io/sammiebarasa-web.github.io/)
+
 
 Targeted Marketing: Utilize customer data to create targeted marketing campaigns that focus on specific demographics or customer preferences, enhancing engagement and driving sales.
