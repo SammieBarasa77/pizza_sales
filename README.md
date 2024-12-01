@@ -406,6 +406,10 @@ FROM Upsell_Orders
 GROUP BY upsell_item;
 ```
 
+**Dashboard**
+
+![Dashboard](https://github.com/SammieBarasa77/pizza_sales/blob/main/assets/docs/The%20Urban%20Pizzas%20Analysis.pdf)
+
 ## 4. Insights and Recommendations
 
 Average Pizza Orders per Order: *The average number of pizzas per order is 2.32, indicating typical customer order behavior.*
