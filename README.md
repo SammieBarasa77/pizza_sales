@@ -192,7 +192,8 @@ ORDER BY Total_Revenue DESC;
 ![Top Sellers](https://github.com/SammieBarasa77/pizza_sales/blob/main/assets/images/total_sellers_rev_orders_.png)
 
 
-*The following part of the project is an extended section of the project I did at a later stage of the project using a different SQL database, therefore I didn't include the outputs of the queries*
+*The following part of the project is an extended section of the project I did at a later stage of the project using a different SQL database, therefore I didn't include the outputs of the queries.*
+
 *For a thriving busing business entity, data analysis plays a very vital role. There are still many areas that require analysis and some of them include the following;*
 
 # 3. Advanced Sales Analysis
