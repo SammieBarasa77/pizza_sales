@@ -407,12 +407,14 @@ GROUP BY upsell_item;
 ```
 
 **Dashboard**
-
-![Dashboard](https://github.com/SammieBarasa77/pizza_sales/blob/main/assets/docs/The%20Urban%20Pizzas%20Analysis.pdf)
+Page 1
+![Dashboard](https://github.com/SammieBarasa77/pizza_sales/blob/main/assets/images/dash_1.png)
+Page 2
+![Dashboard](https://github.com/SammieBarasa77/pizza_sales/blob/main/assets/images/dash_2.png)
 
 ## 4. Insights and Recommendations
 
-Average Pizza Orders per Order: *The average number of pizzas per order is 2.32, indicating typical customer order behavior.*
+Average Pizza Orders per Order: *The average number of pizzas per order is 2.32, indicating typical customer order behaviour.*
 
 Average Daily Order Trends: *The average daily orders for each day of the week show that Saturday has the highest average at 3,158 orders, followed by Wednesday at 3,024 and Monday at 2,794, suggesting varying demand patterns throughout the week.*
 
