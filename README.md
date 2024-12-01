@@ -95,6 +95,7 @@ SELECT * FROM [Pizza DB].[dbo].[Pizza_Data];
 SELECT SUM(total_price) AS Total_Revenue FROM Pizza_Data;
 ```
 Output
+
 ![Total revenue](https://github.com/SammieBarasa77/pizza_sales/blob/main/assets/images/total_rev.png)
 
 #### Average Order Value (Revenue/Orders)
@@ -117,7 +118,7 @@ SELECT COUNT(DISTINCT order_id) AS Total_Orders FROM Pizza_Data;
 ![Total Orders](https://github.com/SammieBarasa77/pizza_sales/blob/main/assets/images/total_orders.png)
 
 #### Average Pizzas Per Order
-```
+```sql
 SELECT 
 CAST(CAST(SUM(quantity) AS DECIMAL(10, 2)) / 
 CAST(COUNT(DISTINCT order_id) AS DECIMAL(10, 2)) AS DECIMAL(10, 2)) as Average_Pizza_Per_order 
@@ -437,6 +438,8 @@ Size Promotions: *With Large pizzas accounting for most sales, consider offering
 
 Loyalty Programs: *Implementing a loyalty program could encourage repeat customers to order more frequently and increase overall sales.*
 
+Targeted Marketing: *Utilize customer data to create targeted marketing campaigns that focus on specific demographics or customer preferences, enhancing engagement and driving sales.*
+
 ## 5. Appendix
 ### Data Source References
 Feel free to download the dataset I used for this very analysis from here and do the analysis on your own if you would like to: 'https://github.com/SammieBarasa77/pizza_sales/blob/main/assets/docs/Pizza_Data.csv'
@@ -445,7 +448,7 @@ Feel free to download the dataset I used for this very analysis from here and do
 
 ### Samuel Almario Barasa
 ![LinkedIn](https://www.linkedin.com/in/samuel-barasa-b01488211/)
+
 ![Portfolio](https://sammiebarasa77.github.io/sammiebarasa-web.github.io/)
 
 
-Targeted Marketing: Utilize customer data to create targeted marketing campaigns that focus on specific demographics or customer preferences, enhancing engagement and driving sales.
