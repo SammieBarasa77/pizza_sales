@@ -94,20 +94,28 @@ SELECT * FROM [Pizza DB].[dbo].[Pizza_Data];
 ```sql
 SELECT SUM(total_price) AS Total_Revenue FROM Pizza_Data;
 ```
+Output
+![Total revenue](https://github.com/SammieBarasa77/pizza_sales/blob/main/assets/images/total_rev.png)
 
 #### Average Order Value (Revenue/Orders)
 ```sql
 SELECT SUM(total_price) / COUNT(DISTINCT order_id) AS Average_order_value FROM Pizza_Data;
 
 ```
+![Average Order Value](https://github.com/SammieBarasa77/pizza_sales/blob/main/assets/images/avg_order_value.png)
+
 #### Total Pizzas Sold
 ```sql
 SELECT SUM(quantity) AS Total_Pizzas_sold FROM Pizza_Data;
 ```
+![Total Pizzas](https://github.com/SammieBarasa77/pizza_sales/blob/main/assets/images/total_pizzas.png)
+
 #### Total Orders
 ```sql
 SELECT COUNT(DISTINCT order_id) AS Total_Orders FROM Pizza_Data;
 ```
+![Total Orders](https://github.com/SammieBarasa77/pizza_sales/blob/main/assets/images/total_orders.png)
+
 #### Average Pizzas Per Order
 ```
 SELECT 
@@ -115,6 +123,7 @@ CAST(CAST(SUM(quantity) AS DECIMAL(10, 2)) /
 CAST(COUNT(DISTINCT order_id) AS DECIMAL(10, 2)) AS DECIMAL(10, 2)) as Average_Pizza_Per_order 
 FROM Pizza_Data;
 ```
+![Average Pizzas Per Order](https://github.com/SammieBarasa77/pizza_sales/blob/main/assets/images/avg_pizza_orders.png)
 
 ### Trends Analysis
 
@@ -125,6 +134,8 @@ COUNT(DISTINCT order_id) AS Average_Daily_Orders
 FROM Pizza_Data 
 GROUP BY DATENAME(DW, order_date);
 ```
+![Average Daily Orders](https://github.com/SammieBarasa77/pizza_sales/blob/main/assets/images/avg_daily_trends.png)
+
 #### Monthly Orders Trends
 
 ```sql
@@ -135,6 +146,7 @@ FROM Pizza_Data
 GROUP BY DATENAME(MONTH, order_date) 
 ORDER BY Total_Monthly_Orders DESC;
 ```
+![Monthly Orders Trends](https://github.com/SammieBarasa77/pizza_sales/blob/main/assets/images/monthly_trends.png)
 
 ### Sales by Categories and Sizes
 
@@ -149,6 +161,8 @@ WHERE MONTH(order_date) = 1
 GROUP BY pizza_category 
 ORDER BY Percentage_of_sales DESC;
 ```
+![ Month 1](https://github.com/SammieBarasa77/pizza_sales/blob/main/assets/images/percent_sales_by_category.png)
+
 #### Percentage of Sales by Pizza Size (Quarter 1):
 ```sql
 SELECT pizza_size, 
@@ -161,6 +175,7 @@ WHERE DATEPART(QUARTER, order_date) = 1
 GROUP BY pizza_size 
 ORDER BY Percentage_of_sales DESC;
 ```
+![Quarter 1](https://github.com/SammieBarasa77/pizza_sales/blob/main/assets/images/percent_sales_by_size.png)
 
 ### Top Sellers by Revenue, Orders, and Quantity
 ```sql
@@ -173,9 +188,11 @@ FROM Pizza_Data
 GROUP BY pizza_name 
 ORDER BY Total_Revenue DESC;
 ```
+![Top Sellers](https://github.com/SammieBarasa77/pizza_sales/blob/main/assets/images/total_sellers_rev_orders_.png)
 
-For a thriving busing business entity, data analysis plays a very vital role.
-There are still many areas that require analysis and some of them include the following;
+
+*The following part of the project is an extended section of the project I did at a later stage of the project using a different SQL database, therefore I didn't include the outputs of the queries*
+*For a thriving busing business entity, data analysis plays a very vital role. There are still many areas that require analysis and some of them include the following;*
 
 ## 3. Advanced Sales Analysis
 
