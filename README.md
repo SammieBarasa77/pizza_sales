@@ -62,7 +62,7 @@
    - [Samuel Almario Barasa](#samuel-almario-barasa)
    - [Contact Information](#contact-information)
 
-## 1. Introduction
+# 1. Introduction
 
 ### Project Overview 
 
@@ -80,7 +80,7 @@ Advanced Sales Insights: Explores customer behaviour, profitability, retention, 
 *To uncover opportunities for improving customer retention and optimizing operations.*
 *To provide actionable recommendations based on data-driven insights.*
 
-## 2. Database Setup and Queries
+# 2. Database Setup and Queries
 ### Using the Database
 
 ```sql
@@ -195,7 +195,7 @@ ORDER BY Total_Revenue DESC;
 *The following part of the project is an extended section of the project I did at a later stage of the project using a different SQL database, therefore I didn't include the outputs of the queries*
 *For a thriving busing business entity, data analysis plays a very vital role. There are still many areas that require analysis and some of them include the following;*
 
-## 3. Advanced Sales Analysis
+# 3. Advanced Sales Analysis
 
 ### Customer Demographics and Behavior
 
@@ -416,7 +416,7 @@ Page 2
 
 ![Dashboard](https://github.com/SammieBarasa77/pizza_sales/blob/main/assets/images/dash_2.png)
 
-## 4. Insights and Recommendations
+# 4. Insights and Recommendations
 
 Average Pizza Orders per Order: *The average number of pizzas per order is 2.32, indicating typical customer order behaviour.*
 
@@ -450,11 +450,11 @@ Loyalty Programs: *Implementing a loyalty program could encourage repeat custome
 
 Targeted Marketing: *Utilize customer data to create targeted marketing campaigns that focus on specific demographics or customer preferences, enhancing engagement and driving sales.*
 
-## 5. Appendix
+# 5. Appendix
 ### Data Source References
 Feel free to download the dataset I used for this very analysis from here and do the analysis on your own if you would like to: 'https://github.com/SammieBarasa77/pizza_sales/blob/main/assets/docs/Pizza_Data.csv'
 
-## 6. Author
+# 6. Author
 
 ### Samuel Almario Barasa
 ![LinkedIn](https://www.linkedin.com/in/samuel-barasa-b01488211/)
