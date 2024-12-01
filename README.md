@@ -407,10 +407,13 @@ GROUP BY upsell_item;
 ```
 
 **Dashboard**
+
 Page 1
+
 ![Dashboard](https://github.com/SammieBarasa77/pizza_sales/blob/main/assets/images/dash_1.png)
 
 Page 2
+
 ![Dashboard](https://github.com/SammieBarasa77/pizza_sales/blob/main/assets/images/dash_2.png)
 
 ## 4. Insights and Recommendations
